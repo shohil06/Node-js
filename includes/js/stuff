@@ -1,0 +1,65 @@
+//
+// if((arr[pos_expec].indexOf(lifeFemale)!=-1))
+// {
+//   for(var i=1960 ;i<2015 ;i+=4)
+//   {
+//     if(i==arr[pos_year])
+//     {
+//       sum=sum+arr[arr.length-1];
+//       counter++;
+//     }
+//   }
+  //  if(1960<=arr[pos_year]<=1967)
+  //  {
+  //      accu[0]=acc[0]+arr[arr.length - 1];
+  //      ++accu[][];
+  //  }
+  //  if(1968<=arr[pos_year]<=1975)
+  //  {
+  //      accu[1]=accu[1]+arr[arr.length - 1];
+  //      ++accu[][];
+  //  }
+  //  if(1976<=arr[pos_year]<=1983)
+  //  {
+  //      accu[2]=accu[2]+arr[arr.length - 1];
+  //      ++accu[][];
+  //  }
+  //  if(1984<=arr[pos_year]<=1991)
+  //  {
+  //      accu[3]=accu[3]+arr[arr.length - 1];
+  //      ++accu[][];
+  //  }
+  //  if(1992<=arr[pos_year]<=1999)
+  //  {
+  //      accu[4]=accu[4]+arr[arr.length - 1];
+  //      ++accu[][];
+  //  }
+  //  if(2000<=arr[pos_year]<=2007)
+  //  {
+  //      accu[5]=accu[5]+arr[arr.length - 1];
+  //      ++accu[][];
+  //  }
+  //  if(2008<=arr[pos_year]<=2015)
+  //  {
+  //      accu[6]=accu[6]+arr[arr.length - 1];
+  //      ++accu[][];
+  //  }
+//      }
+// }
+// if((arr[pos_expec].indexOf(lifeMale)!=-1))
+//   {
+//     var brr={};
+//     brr['Male']=arr[arr.length - 1];
+//     brr['Year']=arr[pos_year];
+//     Uniarr.push(brr);
+//     delete brr;
+//   }
+// else if((arr[pos_expec].indexOf(lifeFemale)!=-1))
+//   {
+//     var brr={};
+//     brr['Female']=arr[arr.length - 1];
+//     brr['Year']=arr[pos_year];
+//     Uniarr.push(brr);
+//     delete brr;
+//   }
+// }

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script> -->
+  <body>
+    <script>
+      var outerWidth=800;
+      var outerHeight=600;
+      var margin={left :150, top: 30, right: 30, bottom: 60};
+      var barPadding=0.2;
+      var xColumn="Country";
+      var yColumn="value";
+      var innerWidth = outerWidth - margin.left - margin.right;
+      var innerHeight = outerHeight - margin.top - margin.bottom;
+
+      var tip = d3.tip()
+      .attr('class', 'd3-tip')
+      .offset([-10, 0])
+      .html(function(d) {
+      return "<strong>Value:</strong> <span style='color:red'>" + d.value + "</span>";
+      });
+
+      var svg = d3.select("body").append("svg")
+        .attr("width", outerWidth)
+        .attr("height", outerHeight);
+      var g = svg.append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+      var xAxisG = g.append("g")
+        .attr("transform", "translate(0," +  innerHeight + ")");
+      var yAxisG = g.append("g");
+
+      svg.call(tip);
+
+
+      var xScale = d3.scale.ordinal().rangeRoundBands([0,innerWidth],barPadding);
+      var yScale = d3.scale.linear().rangeRound([innerHeight,0]);
+      var colorScale = d3.scale.category10();
+
+
+      var xAxis = d3.svg.axis().scale(xScale).orient("bottom");
+      var yAxis = d3.svg.axis().scale(yScale).orient("left");
+      svg.append("text")
+      .attr("x", 430 )
+      .attr("y", 595 )
+      .style("text-anchor", "middle")
+      .attr("font-size",22)
+      .style("font-weight","bold")
+      .text("Top 5 Countries with Highest L.E in Total Years");
+
+      svg.append("text")
+      .attr("x", 60 )
+      .attr("y", 300 )
+      .style("text-anchor", "middle")
+      // .attr("transform", "rotate(-90)")
+      .attr("font-size",22)
+      .style("font-weight","bold")
+      .text("Value (years)");
+
+      function render(data)
+      {
+        console.log(data);
+        xScale.domain(data.map(function (d){return d[xColumn];}));
+        yScale.domain([0,90]);
+
+        xAxisG.call(xAxis);
+        yAxisG.call(yAxis);
+
+        var bars = g.selectAll("rect").data(data);
+        bars.enter().append("rect")
+          .attr("width", function(d){ return 100 - (100 -(d.value));});
+        bars
+          .attr("x",function(d){return xScale(d[xColumn]);})
+          .attr("y",function(d){return yScale(d[yColumn]);})
+          .attr("fill","blue")
+          .attr("height",function(d){return innerHeight - yScale(d[yColumn]);})
+          .on('mouseover', tip.show)
+          .on('mouseout', tip.hide);
+      }
+
+
+      d3.json("indica 2.json",render);
+    </script>
+
+    <!-- <script src="d3Sec.js"></script> -->
+  </body>
+</html>
